@@ -1,5 +1,5 @@
 <?php
-include "includes/header.php";
+require ("includes/header.php");
 // define variables and set to empty values
 $nameErr = $emailErr = $genderErr = $websiteErr = "";
 $name = $email = $gender = $comment = $website = "";
@@ -372,7 +372,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </div>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 
-Name: <input type="text" name="name">
+Name: <input type="date" name="name">
 <span class="error" >* <?php echo $nameErr;?></span>
 <br><br>
 E-mail:
@@ -393,9 +393,31 @@ Gender:
 <br><br>
 <input type="submit" name="submit" value="Submit">
 
-</form>
+</form><?php
+echo readfile("webdictionary.txt");
 
+$d=strtotime("tomorrow");
+echo date("Y-m-d h:i:sa", $d) . "<br>";
+
+$d=strtotime("next Saturday");
+echo date("Y-m-d h:i:sa", $d) . "<br>";
+
+$d=strtotime("+3 Months");
+echo date("Y-m-d h:i:sa", $d) . "<br>";
+$d=mktime(11, 14, 54, 8, 12, 2014);
+echo "Created date is " . date("Y-m-d h:i:sa", $d);
+?>
+<br><br>
+&copy; 2010-<?php 
+ date_default_timezone_set("Asia/Kabul");
+echo date("Y");?>
 <?php
+
+  echo "Today is " . date("Y/m/d") . "<br>";
+  echo "Today is " . date("Y.m.d") . "<br>";
+  echo "Today is " . date("m-Y-d") . "<br>";
+  echo "Today is " . date("l"). "<br>";
+  echo "time is ".date("H:i:s:a");
 
 // $name = $lastname = $age = $gender;
 // if($_SERVER['REQUEST_METHOD'] == "POST")
